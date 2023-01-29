@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signup.css">
+    <title>SignUp Page</title>
+</head>
+<body>
+    <!-- <fieldset > -->
+        
+        
+        <form class="signup">
+            <h1 class="title"><b>Sign Up</b></h1>
+            
+            <label>Name</label><br>
+            <input type="text" name="name" id="name"><br><br>
+            <label>Username</label><br>
+            <input type="text" name="username" id="username"><br><br>
+            <label>Email</label><br>
+            <input type="text" name="email" id="email"><br><br>
+            <label>Password</label><br>
+            <input type="password" name="password" id="password"><br><br>
+            <label>Confirm Password</label><br>
+            <input type="password" name="confirm_password" id="confirm_password"><br><br>
+            <input type="submit" id="submit">
+            <p class="error"></p>
+        </form>
+    <!-- </fieldset> -->
+
+    <script>
+        let signupForm = document.querySelector(".signup");
+        let inputName = document.querySelector("#name");
+        let inputEmail = document.querySelector("#email");
+        let inputPassword = document.querySelector("#password");
+        let inputPasswordConfirm = document.querySelector("#confirm_password");
+        let inputUsername = document.querySelector("#username");
+
+        let errorMsg = document.querySelector(".error");
+
+        signupForm.addEventListener("submit", validateForm)
+        let arr = [];
+        let id = 1;
+
+        function validateForm(e) {
+            e.preventDefault();
+            let name = inputName.value;
+            let email = inputEmail.value;
+            let password = inputPassword.value;
+            let password_Confirm = inputPasswordConfirm.value;
+            let username = inputUsername.value;
+
+            if(checkName(name) <2) {
+                errorMsg.innerHTML = "Name must be at least 2 words";
+            }
+            else if (email.indexOf('@') == -1) {
+                errorMsg.innerHTML = "Email must be contain @ character";
+            }
+            else if (checkPassword(password, name, email) == false) {
+                console.log(password)
+                errorMsg.innerHTML = "Password must be contain 1 numerical, 1 character, 1 special character";
+            }
+            else if (password != password_Confirm) {
+                errorMsg.innerHTML = "Password must be same"
+            }
+            else if (checkEmail(email) ==false) {
+                errorMsg.innerHTML = "Email already in use"
+            }
+            else {
+                errorMsg.innerHTML = "Form submitted successfully";
+
+                let obj = {id: id++, name, username, email, password}
+                arr.push(obj);
+
+                inputName.value ="";
+                inputEmail.value ="";
+                inputPassword.value = "";
+                inputPasswordConfirm.value = "";
+                inputUsername.value = "";
+                localStorage.setItem("data", JSON.stringify(arr));
+                window.location.href = "./login.html";
+            }
+
+        }
+
+        function checkName(name) {
+            name = name.trim();
+            let arr = name.split(" ");
+            return arr.length;
+        }
+        function checkPassword(password, name, email) {
+            let s1=0, c1=0, num = 0, sp=0;
+            for(let t of password) {
+                if(t>='A' && t<='Z') {
+                    c1=c1+1;
+                }
+                else if(t>='a' && t<='z') {
+                    s1++;
+                }
+                else if(t>="0" && t<="9") {
+                    num++;
+                }
+                else {
+                    sp++;
+                }
+            }
+            if(s1>=1 && c1>=1 && num>=1 && sp>=1 && password != name && password != email) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        function checkEmail(email) {
+            for(let t of email){
+                if(t.email == email){
+                    return false;
+                }
+                else {
+                    return true;
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>
