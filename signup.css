@@ -1,0 +1,42 @@
+body  {  
+    margin: 0;  
+    padding: 40px;  
+    background-image: url('https://images.pexels.com/photos/1955134/pexels-photo-1955134.jpeg?auto=compress&cs=tinysrgb&w=600');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    background-color:#6abadeba;  
+    font-family: 'Arial';  
+} 
+.signup {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 382px;  
+    overflow: hidden;  
+    margin: auto;  
+    margin: 20 0 0 450px;  
+    padding: 80px;  
+    background: rgb(111, 175, 228);  
+    border-radius: 15px ; 
+}
+.title {
+    text-align: center;
+    color: rgb(48, 45, 45);
+}
+input {
+    width: 300px;
+    height: 23px;
+    border-radius: 5px;
+}
+#submit {
+    display: block;
+    margin-left: 100px;
+    margin-right: 300px;
+    text-align: center;
+    width: 100px;
+    background-color: rgb(70, 227, 172);
+}
+.error {
+    color: red;
+}

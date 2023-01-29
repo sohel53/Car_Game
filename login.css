@@ -1,0 +1,58 @@
+.login {
+    width: 382px;  
+    height: 540px;
+    overflow: hidden;  
+    margin: auto;
+    margin-top: 10px;  
+    /* margin: 10 0 0 45px;   */
+    padding: 80px;  
+    background: rgb(241, 231, 171);  
+    border-radius: 15px ; 
+    
+}
+.login-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    border-radius: 30px;
+}
+.login-title {
+    text-align: center;
+}
+#submit {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80px;
+    height: 25px;
+    border-radius: 5px;
+    background-color: rgb(59, 163, 130);
+}
+input {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    height: 20px;
+    width: 200px;
+}
+#login-label {
+    display: block;
+    margin-left: 150px;
+    margin-right: auto;
+} 
+
+.signup {
+    width: 80px;
+    height: 25px;
+    border-radius: 5px;
+    background-color: rgb(59, 163, 130);
+} 
+.create {
+    text-align: center;
+}
+.error {
+    color: red;
+    text-align: center;
+}
